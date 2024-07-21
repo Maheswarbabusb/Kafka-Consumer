@@ -21,11 +21,12 @@ public class App
                 "org.apache.kafka.common.serialization.StringSerializer");
 
         properties.put("value.serializer",
-                "org.example.StringSerializer");
+                "org.apache.kafka.common.serialization.StringSerializer");
+        properties.put("partitioner.class",VIPPartitioner.class.getName());
 
         try (KafkaProducer<String, String> producer = new KafkaProducer<>(properties)) {
-           // Truck truck = new Truck(1, "23.1", "22.7");
-            ProducerRecord<String, String> record = new ProducerRecord<>("truck-topic", "TestTruck", "23.2L-20.1L");
+          //  Truck truck = new Truck(1, "23.1", "22.7");
+            ProducerRecord<String, String> record = new ProducerRecord<>("Truck-Partitioned-Topic","Truck-test", "37.2431-15.793");
             RecordMetadata send = producer.send(record).get();
             System.out.println( "Message Sent" );
         } catch (Exception e) {
