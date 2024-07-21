@@ -20,7 +20,6 @@ public class App
         properties.put("key.serializer",
                 "org.apache.kafka.common.serialization.StringSerializer");
 
-<<<<<<< Updated upstream
         properties.put("value.serializer",
                 "org.apache.kafka.common.serialization.StringSerializer");
         properties.put("partitioner.class",VIPPartitioner.class.getName());
@@ -32,26 +31,6 @@ public class App
             System.out.println( "Message Sent" );
         } catch (Exception e) {
             e.printStackTrace();
-=======
-        properties.put("value.deserializer",
-                "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.put("group.id", "truck-partitioned-group");
-
-        KafkaConsumer<String, String> consumer=new KafkaConsumer<>(properties);
-
-        consumer.subscribe(Collections.singletonList("Truck-Partitioned-Topic"));
-
-        ConsumerRecords<String, String> poll = consumer.poll(Duration.ofSeconds(20));
-
-        for(ConsumerRecord<String, String> kaf:poll){
-
-            System.out.println(kaf.key());
-            System.out.println(kaf.value());
-            System.out.println(kaf.partition());
-//                    getId());
-//            System.out.println(kaf.value().getLongitude());
-//            System.out.println(kaf.value().getLatitude());
->>>>>>> Stashed changes
         }
 
     }
